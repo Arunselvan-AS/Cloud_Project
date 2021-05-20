@@ -1,0 +1,30 @@
+<!-- Create a simple CodeMirror instance -->
+<link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+<script src="node_modules/codemirror/lib/codemirror.js"></script>
+<script src= "node_modules/jquery/dist/jquery.min.js"></script>
+<script src="js/jquery-linenumbers.min.js"></script>
+<!-- <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+</link>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"> -->
+</script>
+<script>
+  $('document').ready(function(){
+  $('#Code').linenumbers({col_width:'25px'});})
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<textarea id="Code" cols="30" rows="10"></textarea>
+	</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/codemirror.css">
+	<link rel="stylesheet" href="./css/monokai.css">
+	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+	<title>Online NS2 Compiler</title>
+</head>
+
+<body style="background-color: rgb(220,220,220);">
+	<div class="container">
+		<h1 style="text-align: center;font-family: Calibri"><b>ONLINE NS2 COMPILER<b></h1>
+		<div class="col-md-6">
+			<form>
+				<div class="form-group">
+					<div id="code">
+						<label for="comment" style="font-family: Calibri; font-size: 20px;"><b>Type Your Code:
+							</b></label><br><br>
+						<textarea class="codemirror-textarea cm-s-monokai" rows="32" id="Code" name="Code" style="font-size: 20px;font-family:calibri">
+# Create a simulator object
+set ns [new Simulator]
+
+#Only trace file is available to compile
+# Open the NAM trace file
+set tf [open out.tr w]
+$ns trace-all $tf
+
+# Define a 'finish' procedure
+proc finish {} {
+global ns tf
+$ns flush-trace
+close $tf
+exit 0
+}
+
+#Write your code here
+
+# Run the simulation
+$ns run
+
+						</textarea>
+					</div>
+
+				</div>
+				<br>
+				<button type="button" class="btn btn-primary" id="submit" name="submit"; style="font-size: 15px;font-family: Calibri;">Submit</button>
+			</form>
+			<br>
+			<p style="font-family: Calibri; font-size: 18px"><b>Compiled Status: </b><span id="compileStatus"></span></p>
+        		</div>
+        		<div class="col-md-6">
+        			<div id="output">
+        				<label for="comment" style="font-family: Calibri;font-size: 20px"><b>Output:</b></label><br><br>
+        				<textarea class="form-control" rows="9" cols="100" id="Output" name="Output"
+        					style="background-color: rgb(192,192,192);box-shadow: 5px 10px #888888;border-radius: 25px;resize: vertical;font-size: 15px;font-family:Calibri;"></textarea>
+        			</div>
+        			<br><br>
+        			<button type="button" class="btn btn-primary"disabled id="traceFile" name="traceFile" style="font-size: 15px;font-family: Calibri";>Dowload Tracefile</button>
+        			<br><br>
+        			<div id="metrics">
+        				<label for="comment" style="font-family: Calibri;font-size: 20px"><b>Performance
+        						Metrics:</b></label><br><br>
+        				<textarea class="form-control" rows="9" cols="100" id="Metrics" name="Metrics"
+        					style="background-color: rgb(192,192,192);box-shadow: 5px 10px #888888;border-radius: 25px;resize: vertical;font-size: 15px;font-family:Calibri;"></textarea>
+        			</div><br>
+        		</div>
+	</div>
+</body>
+<script src= "./js/jquery.min.js"></script>
+<script src="../js/javascript.js" charset="UTF-8"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/codemirror.js"></script>
+<script src="./js/tcl/tcl.js"></script>
+</html>
